@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: '#fff', // Couleur de fond de la modal
+    backgroundColor: '#fff', 
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   buttonClose: {
-    backgroundColor: '#6200ee', // Couleur de fond des boutons
+    backgroundColor: '#6200ee', 
   },
   textStyle: {
     color: '#fff',
