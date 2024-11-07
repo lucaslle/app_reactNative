@@ -1,9 +1,60 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Modal, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Modal, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const ToDoApp = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([
+    {
+      id: '1',
+      title: 'Faire les courses',
+      description: 'Acheter de la nourriture pour la semaine',
+    },
+    {
+      id: '2',
+      title: 'Aller à la salle de sport 3 fois par semaine',
+      description: 'Rester en forme et en bonne santé',
+    },
+    {
+      id: '3',
+      title: 'Monter à plus de 5000m d\'altitude',
+      description: 'Relever un défi physique et personnel',
+    },
+    {
+      id: '4',
+      title: 'Acheter mon premier appartement',
+      description: 'Devenir propriétaire et investir dans l\'immobilier',
+    },
+    {
+      id: '5',
+      title: 'Perdre 5 kgs',
+      description: 'Atteindre mon objectif de poids idéal',
+    },
+    {
+      id: '6',
+      title: 'Gagner en productivité',
+      description: 'Optimiser mon temps et mes tâches au quotidien',
+    },
+    {
+      id: '7',
+      title: 'Apprendre un nouveau langage',
+      description: 'Développer de nouvelles compétences linguistiques',
+    },
+    {
+      id: '8',
+      title: 'Faire une mission en freelance',
+      description: 'Acquérir de l\'expérience dans le travail indépendant',
+    },
+    {
+      id: '9',
+      title: 'Organiser un meetup autour de la tech',
+      description: 'Créer une communauté locale autour de mes centres d\'intérêt',
+    },
+    {
+      id: '10',
+      title: 'Faire un triathlon',
+      description: 'Relever un défi sportif et atteindre un nouvel objectif',
+    },
+  ]);
   const [showModal, setShowModal] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
   const [title, setTitle] = useState('');
@@ -36,8 +87,8 @@ const ToDoApp = () => {
   return (
     <ImageBackground source={{ uri: '/api/placeholder/1920/1080' }} style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Objectif</Text>
-        <View style={styles.taskList}>
+        <Text style={styles.title}>Objectifs</Text>
+        <ScrollView style={styles.taskList}>
           {tasks.map((task) => (
             <View key={task.id} style={styles.taskItem}>
               <View>
@@ -49,10 +100,10 @@ const ToDoApp = () => {
               </TouchableOpacity>
             </View>
           ))}
-        </View>
+        </ScrollView>
         <TouchableOpacity style={styles.addButton} onPress={addTask}>
           <MaterialIcons name="add" size={24} color="#fff" />
-          <Text style={styles.addButtonText}>Add Task</Text>
+          <Text style={styles.addButtonText}>Ajouter un objectif</Text>
         </TouchableOpacity>
       </View>
 
@@ -60,11 +111,11 @@ const ToDoApp = () => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>
-              {currentTask ? 'Edit Task' : 'Add Task'}
+              {currentTask ? 'Modifier un objectif' : 'Ajouter un objectif'}
             </Text>
             <TextInput
               style={styles.input}
-              placeholder="Title"
+              placeholder="Titre"
               value={title}
               onChangeText={setTitle}
             />
@@ -76,13 +127,13 @@ const ToDoApp = () => {
             />
             <View style={styles.modalActions}>
               <TouchableOpacity style={styles.button} onPress={saveTask}>
-                <Text style={styles.buttonText}>Save</Text>
+                <Text style={styles.buttonText}>Enregistrer</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, styles.cancelButton]}
                 onPress={() => setShowModal(false)}
               >
-                <Text style={styles.buttonText}>Cancel</Text>
+                <Text style={styles.buttonText}>Annuler</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -97,12 +148,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#9333ea',
+    backgroundColor: '#1b1b1b',
   },
   content: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     borderRadius: 16,
-    padding: 30,
+    padding: 24,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -111,6 +162,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    flex: 1,
+    width: '100%',
   },
   title: {
     fontSize: 24,
@@ -119,6 +172,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   taskList: {
+    flex: 1,
     marginBottom: 16,
   },
   taskItem: {
