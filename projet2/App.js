@@ -6,8 +6,8 @@ import ToDoApp from './components/todo';
 const App = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ToDoApp/>
-      {/* <Weather/> */}
+      {/* <ToDoApp/> */}
+      <Weather/>
     </SafeAreaView>
   );
 };
