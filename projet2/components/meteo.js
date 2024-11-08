@@ -90,6 +90,7 @@ const Weather = () => {
       <Text style={styles.header}>Météo actuelle</Text>
       {currentWeather && (
         <View style={styles.currentWeatherContainer}>
+          <Text style={styles.cityName}>{currentWeather.name}</Text>
           <Text style={styles.currentTemp}>{currentWeather.main.temp}°C</Text>
           <Text style={styles.currentDescription}>{currentWeather.weather[0].description}</Text>
         </View>
@@ -136,6 +137,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     marginVertical: 10,
+  },
+  cityName: {
+    fontSize: 28,
+    color: '#333',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
   },
   currentWeatherContainer: {
     backgroundColor: '#fff',
